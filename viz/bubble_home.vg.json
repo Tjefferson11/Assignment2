@@ -4,7 +4,7 @@
   "height": 600,
   "title": "Number of Listings Reviews ",
   "data": {
-    "url": "dataset/listings.csv"
+    "url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/dataset/listings.csv"
   },
   "params":   [{
       "name": "NYC_Borough",
