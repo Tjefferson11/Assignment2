@@ -1,0 +1,33 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A bubble plot ",
+    "width": 500,"height": 300,
+    "data": {
+      "url": "dataset/listings_group.csv"
+    },
+    "transform": [{"filter": "datum.Total_listings > 0"}],
+    "params": [{
+        "name": "view",
+        "select": "interval",
+        "bind": "scales"
+      }],
+    "mark": "circle",
+    "encoding": {
+      "y": {
+        "field": "Avg_price",
+        "type": "quantitative",
+        "scale": {"zero": false},
+        "axis": {"minExtent": 30}
+      },
+      "x": {
+        "field": "Total_listings",
+        "type": "quantitative",
+        "scale": {"zero": false},
+        "axis": {"labelOverlap": "parity"}
+      },
+      "size": {"field": "population1020", 
+                "type": "quantitative",
+                "scale": {"range": [10, 100, 200, 500, 850, 1200]}},
+      "color": {"field": "neighbourhood_group"}
+    }
+  }

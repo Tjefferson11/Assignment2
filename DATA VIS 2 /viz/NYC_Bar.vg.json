@@ -1,0 +1,18 @@
+{
+  "data": {"url": "dataset/listings.csv"},
+  "width": {"step": 75},
+  "height": 200,
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "aggregate": "sum", "field": "Count",
+      "title": "Listings Count",
+      "stack": "normalize"
+    },
+    "x": {"field": "neighbourhood_group"},
+    "color": {
+      "field": "room_type",
+      "scale": {"range": ["#d7191c", "#fdae61", "#abd9e9", "#2c7bb6", "#ffffbf"]}
+    }
+  }
+}

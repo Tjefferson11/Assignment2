@@ -1,0 +1,35 @@
+{
+    "data": { "url": "dataset/listings.csv"},
+    "transform": [
+        {"filter": {
+            "field": "room_type",
+            "oneOf": ["Entire home/apt", "Shared room", "Private room", "Hotel room"]
+          }},
+      {"calculate": "datum.availability_365 == 365 ? 'Full Year' : 'Not Fully available'", "as": "availability_group"}
+    ],
+    "width": {"step": 50},
+    "mark": "bar",
+    "encoding": {
+      "column": {
+        "field": "room_type", "type": "nominal", "spacing": 50,
+        "header": {"orient": "bottom"}
+      },
+      "y": {
+        "aggregate": "sum", "field": "Count",
+        "title": "Listings Count",
+        "axis": {"grid": false}
+      },
+      "x": {
+        "field": "availability_group",
+        "title": null
+      },
+      "color": {
+        "field": "availability_group",
+        "scale": {"range": ["#675193", "#ca8861"]}
+      }
+    },
+    "config": {
+      "view": {"stroke": "transparent"},
+      "axis": {"domainWidth": 1}
+    }
+  }
