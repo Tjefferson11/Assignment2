@@ -1,0 +1,17 @@
+{
+    "data": { "url": "dataset/listings.csv"},
+    "width": 500,
+    "height": 200,
+    "mark": "area",
+    "encoding": {
+      "y": {
+        "aggregate": "count",
+        "title": "Review Count"},
+        "color": {"field": "neighbourhood_group",
+                    "scale": {"scheme": "category20b"}
+      },
+      "x": {"timeUnit": "month",
+            "field": "last_review"}
+    }
+  }
+

@@ -1,0 +1,59 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 500,
+    "description": "A ranged price dot plot ",
+    "data": {"url": "dataset/listings_group_rangedotplot.csv"},
+    "transform": [
+        {
+          "filter": {
+            "field": "room_type",
+            "oneOf": ["Entire home/apt"]
+          }}],
+    "encoding": {
+      "x": {
+        "field": "Price_range",
+        "type": "quantitative",
+        "title": "Listings Price Ranges"
+      },
+      "y": {
+        "field": "neighbourhood_group",
+        "type": "nominal",
+        "title": "NYC Borough",
+        "axis": {
+          "offset": 10,
+          "ticks": false,
+          "minExtent": 10,
+          "domain": false
+        }
+      }
+    },
+    "layer": [{
+        "mark": "line",
+        "encoding": {
+          "detail": {
+            "field": "neighbourhood_group",
+            "type": "nominal"
+          },
+          "color": {"value": "#db646f"},
+          "size": {"value": 5}
+        }
+      },
+      {
+        "mark": {
+          "type": "point",
+          "filled": true
+        },
+        "encoding": {
+          "color": {
+            "field": "Prices",
+            "type": "nominal",
+            "title": "Price Range"
+          },
+          "size": {"value": 200},
+          "opacity": {"value": 1}
+        }
+      }
+    ]
+  }
+
