@@ -1,6 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/dataset/listings_calendar.csv"},
+  "background": "transparent",
   "transform": [
         {"filter": "datum.Year_review > 2016"
         }],
@@ -8,7 +9,6 @@
     {
       "width": 300,
       "height: 150,
-      "background": "transparent",
       "mark": "area",
       "encoding": {
         "x": {
