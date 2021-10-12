@@ -1,6 +1,6 @@
 {
-    "data": { "url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/dataset/listings.csv"},
-    "background": "transparent",
+    "data": {"url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/dataset/listings.csv"},
+    "background": "#fee8c8",
     "width": 400,
     "height": 200,
     "mark": "area",
@@ -9,10 +9,12 @@
         "aggregate": "count",
         "title": "Review Count"},
         "color": {"field": "neighbourhood_group",
-                    "scale": {"scheme": "category20b"}
+                    "scale": {"scheme": "darkred"},
+                    "legend": null
       },
       "x": {"timeUnit": "month",
             "field": "last_review"}
     }
   }
+
 
