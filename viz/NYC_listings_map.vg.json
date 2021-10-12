@@ -2,7 +2,6 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json", "title": "New York Neighbourhood Airbnb Listings",
     "width": 500,
     "height": 800,
-    "background": "transparent",
     "projection": {"type": "mercator"},
     "layer": [
       { "data" : {
