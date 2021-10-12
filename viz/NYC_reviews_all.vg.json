@@ -1,15 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/Tjefferson11/Homework10/main/listings_calendar.csv"},
   "width": 400,
   "height": 200, 
-  "data": {"url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/dataset/listings_calendar.csv"},
-  "background": "transparent",
   "transform": [
         {"filter": "datum.Year_review > 2016"
         }],
+  "background": "#fee8c8",
   "vconcat": [
-    {
-      "mark": "area",
+    { "width": 400,
+      "mark": "area", 
       "encoding": {
         "x": {
           "field": "last_review",
@@ -25,11 +25,11 @@
         "color": {
         "field": "neighbourhood_group",
         "type": "nominal",
-        "scale": {"scheme": "category20b"}} 
+        "scale": {"scheme": "darkred"}} 
       }
     },
     {
-      "width": 480,
+      "width": 400,
       "height": 60,
       "mark": "area",
       "params": [
