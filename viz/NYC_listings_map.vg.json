@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json", "title": "New York Neighbourhood Airbnb Listings",
-    "width": 500,
+    "width": "container",
     "height": 800,
-    "background": "transparent",
+    "background": "#fee8c8",
     "projection": {"type": "mercator"},
     "layer": [
       { "data" : {
@@ -34,7 +34,7 @@
       "color": {
         "field": "Listings per 100,000 Population",
         "type": "quantitative",
-        "scale": {"type" : "threshold", "domain" : [0.5, 1.5, 3, 4],"range" : ["#252525","#fb6a4a","#ef3b2c","#cb181d","#99000d"]}
+        "scale": {"type" : "threshold", "domain" : [0.5, 1.5, 3, 4],"scheme" : "darkred", "reverse":true}
       },
       "tooltip": [
         {"field": "neighbourhood_group", "type": "nominal", "title": "Borough Areas"},
