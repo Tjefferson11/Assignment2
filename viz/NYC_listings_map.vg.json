@@ -1,15 +1,15 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json", "title": "New York Neighbourhood Airbnb Listings",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json", "title": null,
     "width": "container",
     "height": 800,
-    "background": "#fee8c8",
+    "background": "transparent",
     "projection": {"type": "mercator"},
     "layer": [
       { "data" : {
         "url" : "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/javascript/2010%20Neighborhood%20Tabulation%20Areas%20(NTAs).json",
         "format" : {"type" : "topojson", "feature": "2010 Neighborhood Tabulation Areas (NTAs)"}
     },
-    "mark": {"type": "geoshape", "fill": "#252525","stroke": "black"}
+    "mark": {"type": "geoshape", "fill": "#969696","stroke": "black", "tooltip": "Open Spaces (Parks, Lakes, Airports, Cemeteries)"}
     },
     {"data": {
     "url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/javascript/neighbourhoods.json",
@@ -34,16 +34,32 @@
       "color": {
         "field": "Listings per 100,000 Population",
         "type": "quantitative",
-        "scale": {"type" : "threshold", "domain" : [0.5, 1.5, 3, 4],"scheme" : "darkred", "reverse":true}
+        "scale": {"type" : "threshold", "domain" : [0.5, 1.5, 3, 4],"scheme" : "darkred", "reverse":true},
+        "legend": {"format": ".0f"}
       },
       "tooltip": [
         {"field": "neighbourhood_group", "type": "nominal", "title": "Borough Areas"},
         {"field": "neighbourhood", "type": "nominal", "title": "Neighbourhood Tabulation Areas"}, 
-        {"field": "Total_listings", "type": "quantitative", "title" : "Total Listings"}]
+        {"field": "Total_listings", "type": "quantitative", "title" : "Total Listings"}]   
     
     } 
     }
 
-  ]
+  ],
+      "config": {
+        "axis": {"grid": null,
+                "labelColor": "white"},
+        "legend": {
+          "titleFontSize": 16,
+          "labelFontSize": 13,
+          "orient": "none",
+          "direction": "horizontal",
+          "legendX": 100,
+          "legendY": 700,
+          "titleOrient": "left",
+          "titleLimit": 300
+                  },
+          "view": {"stroke": "transparent"}     
+                }
 
 }
