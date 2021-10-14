@@ -1,5 +1,8 @@
 {
-    "data": { "url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/dataset/listings.csv},
+    "data": {"url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/dataset/listings.csv"},
+    "width": "container",
+    "title": null,
+    "background": "transparent",
     "transform": [
         {"filter": {
             "field": "room_type",
@@ -7,29 +10,43 @@
           }},
       {"calculate": "datum.availability_365 == 365 ? 'Full Year' : 'Not Fully available'", "as": "availability_group"}
     ],
-    "width": {"step": 50},
+    "width": {"step": 60},
     "mark": "bar",
     "encoding": {
       "column": {
-        "field": "room_type", "type": "nominal", "spacing": 50,
-        "header": {"orient": "bottom"}
+        "field": "room_type", "type": "nominal", "spacing": 40,
+        "header": {"orient": "bottom",
+        "title": "Room Types"}
       },
       "y": {
-        "aggregate": "sum", "field": "Count",
-        "title": "Listings Count",
+        "aggregate": "mean", "field": "price",
+        "title": "Average Price Listings",
         "axis": {"grid": false}
       },
       "x": {
         "field": "availability_group",
-        "title": null
+        "axis": {"title": false,
+                "labels": false}
       },
       "color": {
         "field": "availability_group",
-        "scale": {"range": ["#675193", "#ca8861"]}
-      }
+        "scale": {"scheme": "darkred"},
+        "title": "Availability Group"
+      },
+      "tooltip": [{"aggregate": "mean", "field": "price", "type": "quantitative"}]
     },
     "config": {
       "view": {"stroke": "transparent"},
-      "axis": {"domainWidth": 1}
+      "axis": {"domainWidth": 1},
+      "legend": {
+        "titleFontSize": 15,
+        "labelFontSize": 15,
+        "orient": "none",
+        "direction": "horizontal",
+        "legendX": 10,
+        "legendY": -80,
+        "titleOrient": "left",
+        "titleLimit": 300
+                }
     }
   }
