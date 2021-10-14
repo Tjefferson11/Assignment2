@@ -1,33 +1,122 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "A bubble plot ",
-    "width": 500,"height": 300,
-    "data": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json", "width": 500,
+  "height": 500,
+  "width": "container",
+  "background": "transparent",
+  "title": null,
+  "data": {
       "url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/dataset/listings_group.csv"
     },
-    "transform": [{"filter": "datum.Total_listings > 0"}],
-    "params": [{
-        "name": "view",
-        "select": "interval",
-        "bind": "scales"
-      }],
+    "transform": [
+      {"filter": "datum.Total_listings > 0"}],
+  "encoding": {
+    "x": {
+          "field": "Total_listings",
+          "type": "quantitative",
+          "scale": {"type": "log","zero": false},
+          "axis": {"labelOverlap": "parity",
+          "grid": false,
+          "title": "Log Total Listings"}
+        }, 
+    "y": {
+          "field": "Avg_price",
+          "type": "quantitative",
+          "scale": {"type": "log","zero": false},
+          "axis": {"minExtent": 30,
+                  "grid": false},
+          "title": " Log Average Price"}},
+    "layer":[{"params": [{
+          "name": "view",
+          "select": "interval",
+          "bind": "scales"
+        }],
+    "selection": {
+          "neigh_highlight": {
+                  "type": "multi",
+                  "fields": ["neighbourhood_group"],
+                  "bind": "legend"
+    }},
     "mark": "circle",
     "encoding": {
-      "y": {
-        "field": "Avg_price",
-        "type": "quantitative",
-        "scale": {"zero": false},
-        "axis": {"minExtent": 30}
+    "color": {
+          "field": "neighbourhood_group",
+          "type": "nominal",
+          "scale": {
+          "domain": [
+            "Bronx",
+            "Brooklyn",
+            "Manhattan",
+            "Queens",
+            "Staten Island"
+            ], 
+          "scheme": "darkred"},
+          "legend": {"title": "Niehgbourhood Group",
+                      "orient": "none",
+                      "legendX": 10,
+                      "legendY": 550,
+                      "labelFontSize": 16,
+                      "titleFontSize": 14,
+                      "direction":"horizontal",
+                      "columnPadding": 15}
       },
-      "x": {
-        "field": "Total_listings",
-        "type": "quantitative",
-        "scale": {"zero": false},
-        "axis": {"labelOverlap": "parity"}
-      },
-      "size": {"field": "population1020", 
-                "type": "quantitative",
-                "scale": {"range": [10, 100, 200, 500, 850, 1200]}},
-      "color": {"field": "neighbourhood_group"}
-    }
+  "opacity": {
+        "condition": {"selection": "neigh_highlight", "value": 0.6},
+        "value": 0.1
+  },
+  "size": {"field": "population1020", 
+                  "type": "quantitative",
+                  "scale": {"range": [60, 500, 900, 1500, 2500, 5000]},
+                  "legend": {"title": "Population 2020",
+                      "labelFontSize": 12,
+                      "titleFontSize": 14,
+                      "direction":"vertical",
+                      "rowPadding": 5}},
+   "tooltip": [
+                {"field": "neighbourhood", "type": "nominal"},
+                {"field": "Avg_price", "type": "quantitative", "format": ","}, 
+                {"field": "Total_listings", "type": "quantitative", "format": ","},
+                {"field": "population1020", "type": "quantitative", "format": ","}]
   }
+  
+  },
+  {"transform":
+    [{"filter": "datum.neighbourhood_group == 'Bronx'"},
+    {"filter": "datum.Avg_price > 200"},
+{"calculate": "' (Bronx) average price is higher than 150'", "as": "text_annotation1"}],
+    "mark": {"type": "text", "align": "left", "dx": 4},
+    "encoding": {"text": {"field": "text_annotation1"}
+    }},
+    {"transform":
+    [{"filter": "datum.neighbourhood_group == 'Manhattan'"},
+    {"filter": "datum.Avg_price > 350"},
+{"calculate": "' (Manhattan) average price is higher than 150'", "as": "text_annotation1"}],
+    "mark": {"type": "text", "align": "left", "dx": 4},
+    "encoding": {"text": {"field": "text_annotation1"}
+    }},
+    {"transform":
+    [{"filter": "datum.neighbourhood_group == 'Brooklyn'"},
+    {"filter": "datum.Avg_price < 75 "},
+{"calculate": "' (Brooklyn) average price is lower than 75'", "as": "text_annotation1"}],
+    "mark": {"type": "text", "align": "left", "dx": 4},
+    "encoding": {"text": {"field": "text_annotation1"}
+    }},
+    {"transform":
+    [{"filter": "datum.neighbourhood_group == 'Queens'"},
+    {"filter": "datum.Avg_price < 75"},
+{"calculate": "' (Queens) average price is lower than 75'", "as": "text_annotation1"}],
+    "mark": {"type": "text", "align": "left", "dx": 4},
+    "encoding": {"text": {"field": "text_annotation1"}
+    }},
+    {"transform":
+    [{"filter": "datum.neighbourhood_group == 'Staten Island'"},
+    {"filter": "datum.Avg_price < 50"},
+{"calculate": "' (Staten Island) average price is lower than 50'", "as": "text_annotation1"}],
+    "mark": {"type": "text", "align": "left", "dx": 4},
+    "encoding": {"text": {"field": "text_annotation1"}
+    }}
+    ],
+  "config": {"view": {"stroke": "transparent"}}}
+  
+  
+  
+  
