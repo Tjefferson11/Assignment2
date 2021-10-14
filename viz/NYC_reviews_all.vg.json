@@ -1,14 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {"url": "https://raw.githubusercontent.com/Tjefferson11/Homework10/main/listings_calendar.csv"},
-  "width": 400,
-  "height": 200, 
+  "height": 250, 
   "transform": [
         {"filter": "datum.Year_review > 2016"
         }],
-  "background": "#fee8c8",
+  "background": "transparent",
   "vconcat": [
-    { "width": 400,
+    { "width": 550,
       "mark": "area", 
       "encoding": {
         "x": {
@@ -16,21 +15,24 @@
           "type": "temporal",
           "timeUnit": "yearmonth",
           "scale": {"domain": {"param": "brush"}},
-          "axis": {"title": ""}
+          "axis": {"title": "",
+                  "grid": false}
         },
         "y": {"aggregate": "count",
               "title": "Review Count Zoomed",
               "scale": {"domain": [0,1]},
-              "stack": "normalize"},
+              "stack": "normalize",
+              "axis": {"grid": false}},
         "color": {
         "field": "neighbourhood_group",
         "type": "nominal",
-        "scale": {"scheme": "darkred"}} 
+        "scale": {"scheme": "darkred"},
+        "title": "NYC Borough"}
       }
     },
     {
-      "width": 400,
-      "height": 60,
+      "width": 550,
+      "height": 100,
       "mark": "area",
       "params": [
         {"name": "brush", 
@@ -41,7 +43,8 @@
         "x": {"field": "last_review", 
               "type": "temporal",
               "timeUnit": "yearmonth",
-              "title": "Date"},
+              "title": "Date",
+              "axis": {"grid": false}},
         "y": {
           "aggregate": "count",
           "axis": {"tickCount": 3, "grid": false,
@@ -53,5 +56,12 @@
       }
       }
     }
-  ]
+  ],
+  "config": {
+    "view": {"stroke": "transparent"},
+    "legend": {"orient": "top",
+              "direction": "horizontal",
+              "labelFontSize": 17,
+              "titleFontSize": 17}
+}
 }
