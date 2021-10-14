@@ -2,44 +2,102 @@
 
 
 
+
+
 h1{
     text-align: center;
-    padding: 20px;
-    font-family: 'Noto Sans', sans-serif;
-    background-color: #ef6548;
-    text-align: center;
+    padding-left: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    text-align: left;
     font-size: 50px;
+
 
 }
 
 h2{ font-weight: bolder;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 25px;
     padding: 10px;
-    background-color: #ef6548;
-    text-align: left;
-    
-}
-
-h4{ font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    padding: 10px;
-    text-align: left;
-    
-}
-
-h6{
-    font-family: 'Quattrocento Sans', sans-serif;
-    font-size: 14px;
-    padding: 5px;
-    background-color: #ef6548;
     text-align: center;
     
 }
 
-.container{
-    width: 100%;
+h4{ font-weight: bolder;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    
+}
+
+
+
+h6{
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 14px;
+    padding-left: 20px;
+    text-align: left;
+    
+}
+
+.descriptionspace { 
+    margin-bottom : 50px;
+}
+.description-1{
+    padding-right : 100px;
+    padding-left: 50px;
+    line-height: 33px;
+    margin: auto;
+    margin-right: auto;
+    text-align: left;
+    padding-bottom: 50px;
+    margin-top: 15px;
+}
+.description-map{
+    margin-top: 30px;
+    padding-right: 80px;
+    padding-left: 30px;
+    line-height: 33px;
+    margin-right: 10px;
+}
+
+.description-2{
+    padding-left: 20px;
+    margin-right: 10px;
+    line-height: 33px;
+    margin-top: 30px;
+    text-align: left;
+    padding-bottom: 30px;
+}
+
+.description-3{
+    width: 90%;
+    padding-right: 20px;
+    padding-left: 25px;
+    margin-right: 10px;
+    text-align: left;
+    line-height: 35px;
+    font-size: 20px;
+}
+
+
+.container1{
+    width: 90%;
+    margin-top: 15px;
+}
+
+.container-map{
+    width: 90%
+}
+.container2{
+    width: 80%;
+    margin-top: 15px;
+}
+
+.container3{
+    width: 90%;
+    margin-top: 15px;
 }
 
 .vega-bindings{
@@ -51,7 +109,8 @@ h6{
 
 p{
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 20px;
+    white-space:normal;
 }
 
 .vis-container {
@@ -63,13 +122,39 @@ p{
 }
 
 .page {
-    width: 2000px;
-    background-color: #fee8c8;
+    width: 2100px;
+    background-color: blanchedalmond;
     margin: auto;
     padding: 30px;
     padding-top: 20px;
 }
 
-.small-font {
+.small-font1 {
+    font-family: 'Roboto';
     font-size: 12px;
+    padding-left: 50px;
+    text-align: left;
 }
+
+.small-font2 {
+    font-family: 'Roboto';
+    font-size: 12px;
+    padding-left: 25px;
+    text-align: left;
+}
+
+.small-font3 {
+    font-family: 'Roboto';
+    font-size: 12px;
+    padding-left: 25px;
+    text-align: left;
+}
+
+.hr1{ 
+    border: 0; 
+    height: 10px;
+    background-image: black;
+    padding-top: 5px;
+    color:black
+}
+
