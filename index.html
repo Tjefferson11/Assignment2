@@ -1,8 +1,9 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Suicide Rate 2009 - 2019</title>
+        <title>NYC Airbnb Listings</title>
 
         <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -14,6 +15,10 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Quattrocento+Sans:wght@700&family=Roboto:ital,wght@0,100;0,300;1,300&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" type="text/css" href="css/style.css" media="all">
 
@@ -24,24 +29,133 @@
             <div class = "pure-u-1-1">
                 <h1> New York City Airbnb Listings 2020 - 2021 </h1>
                 <h6> The following vizualization discover the current trends of Airbnb listings in New York City
-                    during COVID-19 times up until now </h6>
+                    during COVID-19 times up until now  divided into 2 parts of analysis.  </h6>
             </div>
         </div> 
 
+        <hr style= "height:5px; color: black; background-color: black; padding-right: 50px;"> 
+
         <div class = "pure-g"> 
             <div class= "pure-u-1-3">
-                <h4> Airbnb Listings Reviews </h4>
-                <div id= "NYC_review_all" class = "vis-container"> </div>
-                <div id= "NYC_review_monthly" class = "vis-container"> </div>
-                <div id= "NYC_review_day" class = "vis-container"> </div> 
+                <h2> Review Charts </h2>
+                <div id= "NYC_review_all" class = "container1"> </div>
+                    <p class = "small-font1">
+                     *slide each window to represent visualisation on respective window  </p>
+                    <p class = "description-1"> Brooklyn and Manhattan dominates the number of reviews got 
+                        as an overall with up to 90% out of total percentage reviews received.
+                        There is a peak spotted during early 2020 before COVID-19 and another 
+                        peak after the first wave of COVID-19 around June-July 2021 </p>
+                <div id= "NYC_review_monthly" class = "container1"> </div>
+                <p class = "description-1"> 
+                    As of the monthly occupancy pattern, June until August shows the prominent number of poeple staying in Airbnb, parituclarly in 
+                    New York. End and early years, also hint a upward pattern of reviews received. Both patter induce high long holiday season in 
+                    the world and United States. </p>
+                <div id= "NYC_review_day" class = "container1"> </div> 
+                <p class = "description-1">
+                    Across daily reviews pattern, weekends; as expected, indicates the day where people are most likely going on a holiday and 
+                    stays in an airbnb. Usually the pattern starts during Friday and weakend or decrease in Monday or Tuesday. </p> 
             </div>
-            <div class = "pure-u-2-3">
-                <h4> NYC Listings Map </h4>
-                <div id = 'NYC_map' class = "vis-container"> </div>
-            </div>
-        </div>  
 
+
+            <div class = "pure-u-1-3">
+                <h2> NYC Chropleth Map </h2>
+                <div id = 'NYC_map' class = "container-map" style="margin-top: auto;"> </div>
+                <p class = "description-map">
+                     Above Vizualization depicts Airbnb listings in different 
+                    neighbourhoods in New York City during 2020 - 2021. The scale 
+                    legends indicate the level of listings encountered normalised 
+                    by each population of their Borough.
+                    Open spaces, such as Airports, Parks, and Lakes does not have any 
+                    listings, hence, colored gray.
+                    As expected, places near the airport are pretty crowded with listings 
+                    despite their low populations, neihgbourhoods with high population
+                    dencity, for example, Midtown Manhattan or SoHo Manhattan had relative 
+                    intermdeiate listings count if normalised with their respective population 
+                </p>
+            </div>
+            <div class = "pure-u-1-3">
+                <h2> Price Charts  </h2>
+                <div id = "NYC_avail" class = "container2" style="margin-top: auto;"> </div>
+                    <div class = "description-2">
+                        <p> The graph depicts differentiated Average Price of Listings, colored by 
+                        whether the corresponding listings are fully available throughout the year and not. 
+                        Entire Home or Apt listings had the highest price with the listings all yaer available are 
+                        more expensive than that is not fully available. 
+                        Hotel room shows similar average price between listings fully year available or not around 
+                        280- 310. 
+                        Private room, as expected, had the lowest average prices compared to other room types, 
+                        around 100 -200 per night. 
+                        </p>
+                    </div>
+                <div id = "bar_price" class = "vis-container"> </div>
+                <p class = "description-2"> In this visualisation, we initially capped the price maximum to be above 1000 as most of it are 
+                    categorised as outliers. Manhattan and Brooklyn had the highest overall listings price per night
+                    compared to other Borough. There is not much significant trend spotted for Manhattan and Brooklyn 
+                    beside the price tends to increase slightly during past few months. There seems to be upward 
+                    pressure for listings in Queens and Staten Island throuhgout the year. During June-July in both 2020
+                    and 2021, spotted higher prices of listings compared to other months, justifies holiday peak season
+                </p>
+            </div>
+        </div> 
         
+
+        <hr style= "height:5px; color: black; background-color: black;"> 
+
+
+        <div class = "pure-g">
+            <div class="pure-u-1-1">
+                <h2> Bubble Charts</h2>
+            </div>
+        </div>
+
+
+        <div class ="pure-g">
+            <div class = "pure-u-1-2">
+                <h4> What Happend to Lisitngs Price (log) with Populations ? </h4>
+                <div id= "bubbleplot" class = "container3"> </div>
+                <p class = "small-font2"> *select the legend to highlight particular Borough </p>
+                <p class = "description-3">
+                    The Bubble chart represent the relation between three variables, namely, Average Listing price in log scale, 
+                    Total listngs in log scale, and Projected population by NYC Government. The purpose on doing logarithm scale 
+                    is to cover the skewness of the data observation distribution.
+                    Not surprising, the bigger the population is (sze), the bigger the total Airbnb listings on a certain neighbourhood, vice versa.
+                    All five borough seems to have similar average listings price across all neighbourhhod, however, 
+                    there is spotted an outliers from Staten Island Borough  with an average listings price reach $500 - $1000 dollars per night. 
+                    Listings in Manhattan seems to have a slight higher price compared to other Borough due to its popularity 
+                    and business district in tourist point of view. 
+                </p> 
+            </div>
+            <div class = "pure-u-1-2">
+                <h4> How About The Progression Average Listings Price ? </h4>
+                <div id= "bubble_home" class = "container3"> </div>
+                <p class = "description-3">
+                    The second stretchable Bubble chart stressed on the realtion of normal scale average price of NYC Airbnb listings, the progression of time, and 
+                    the number of reviews each neighbourhood received. In terms of occupancy hinted from the last review date, all five borough 
+                    had significantly more people staying in Airbnb in 2020- 2021, despite covid-19, the Airbnb sector does not fall 
+                    drastically. In addition there is a pattern showing the increase on listings price after covid-19 breakout, or after the year 2020. 
+                    The number of reviews per neighbourhood are scattered evenly.
+                    Interestingly, there are some outliers listings, wehre it had small number of reviews, but listed at very high price, 
+                    in all of the Borough states. This might justifies the facts that since it was an expensive listings,
+                    not many people stayed there, hence, no reviews. 
+
+                </p>
+            </div>
+        </div>
+
+        <hr style= "height:5px; color: black; background-color: black;"> 
+
+
+        <div class="pure-g">
+            <div class="pure-u-1-1 small-font3">
+                <p > This visualisation is created by <a href="https://github.com/Tjefferson11" target="_blank"> Thomas Jefferson Pranoto </a>. FIT 3179 Data Visualisation 2
+                    <br>
+                Data is Received from <a href="http://insideairbnb.com/new-york-city/" target="-blank"> New York City Airbnb Listings Dataset </a></p>
+            </div>
+        </div>
+        
+        
+            
+            </div>
     </div>
 
     <script type="text/javascript">
@@ -71,4 +185,5 @@
 
 
 </body> 
+
 
