@@ -1,18 +1,44 @@
 {
-    "data": {"url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/dataset/listings.csv"},
-    "background": "#fee8c8",
-    "width": 400,
-    "height": 200,
-    "mark": "area",
-    "encoding": {
-      "y": {
-        "aggregate": "count", 
-        "title": "Review Count"},
-        "color": {"field": "neighbourhood_group",
-                    "scale": {"scheme": "darkred"},
-                    "legend": null
-      },
-      "x": {"timeUnit": "day",
-            "field": "last_review"}
-    }
-  }
+  "data": {"url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/dataset/listings_calendar.csv"},
+  "background": "transparent",
+  "width": "container",
+  "height": 200,
+  "mark": "area",
+  "encoding": {
+    "y": {
+      "aggregate": "count", 
+      "title": "Review Count",
+      "axis": {"grid": false}},
+    "x": {"timeUnit": "day",
+          "field": "last_review",
+          "axis": {"grid": false},
+          "title": "Last Occupancy"}
+  },
+  "layer": [{
+  "mark": "area",
+  "encoding": {
+    "color": {"field": "neighbourhood_group",
+                "scale": {"scheme": "darkred"},
+                "legend": null
+  }}
+},
+  {"transform":
+  [{"filter": "datum.Day_review == 1"},
+{"calculate": "'The highest review: 6648'", "as": "text_annotation1"}],
+  "mark": {"type": "text", "align": "left", "dx": 4},
+  "encoding": {"text": {"field": "text_annotation1"}
+  }},
+  {"transform":
+  [{"filter": "datum.Day_review == 7"},
+{"calculate": "'The highest review: 4109'", "as": "text_annotation1"}],
+  "mark": {"type": "text", "align": "right","baseline": "line-bottom","dx": 4},
+  "encoding": {"text": {"field": "text_annotation1"}
+  }},
+  {"transform":
+  [{"filter": "datum.Day_review == 3"},
+{"calculate": "'The highest review: 3475'", "as": "text_annotation1"}],
+  "mark": {"type": "text", "left": "right","baseline": "line-bottom","dx": 4},
+  "encoding": {"text": {"field": "text_annotation1"}
+  }}],
+"config": {"view": {"stroke": "transparent"}}
+}
