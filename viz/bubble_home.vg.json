@@ -1,29 +1,30 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 800,
-  "height": 600,
+  "width": "container",
+  "height": 500,
+  "background": "transparent",
   "title": "Number of Listings Reviews ",
   "data": {
     "url": "https://raw.githubusercontent.com/Tjefferson11/Assignment2/main/dataset/listings.csv"
   },
   "params":   [{
       "name": "NYC_Borough",
-      "value": "Manhattan",
+      "value": "Bronx",
 "bind": {
   "input": "select",
   "options": [
-    "Manhattan",
     "Bronx",
-    "Staten Island",
+    "Brooklyn",
+    "Manhattan",
     "Queens",
-    "Brooklyn"
+    "Staten Island"
 ],
 "labels":[
-    "Manhattan",
-    "Bronx",
-    "Staten Island",
-    "Queens",
-    "Brooklyn"
+  "Bronx",
+  "Brooklyn",
+  "Manhattan",
+  "Queens",
+  "Staten Island"
 ],
 "name": "NYC Borough classifier: "
  } }
@@ -39,14 +40,15 @@
       "field": "last_review",
       "type": "temporal",
       "title": "Number of reviews ltm",
-      "axis": {"tickCount": 7},
+      "axis": {"tickCount": 7, "grid": false},
       "scale": {"type": "time"}
             },
     "y": {
+      "aggregate": "mean",
       "field": "price",
       "type": "quantitative",
-      "axis": {"tickCount": 6},
-      "scale": {"domain": [0, 10000]}
+      "title": "Average Price",
+      "axis": {"tickCount": 6, "grid": false}
     }
   },
   "layer": [
@@ -73,25 +75,28 @@
             "domain": [10, 100, 1000, 5000, 9999],
             "range": [10, 100, 200, 500, 850, 1200]
           },
-          "legend": {"format": ".1s"}
+          "legend": {"title": "Number of Reviews",
+            "labelFontSize": 16,
+            "titleFontSize": 14,
+            "direction":"vertical",
+            "columnPadding": 15}
         },
         "color": {
           "field": "neighbourhood_group",
           "type": "nominal",
           "scale": {"zero": false,
               "domain": [
+                  "Bronx", 
+                  "Brooklyn",
                   "Manhattan",
-                  "Bronx",
-                  "Staten Island",
                   "Queens",
-                  "Brooklyn"],
-               "range": [
-                  "#e41a1c",
-                  "#984ea3",
-                  "#ff7f00",
-                  "#a6cee3",
-                  "#377eb8",
-                  "#a65628"] }
+                  "Staten Island"],
+               "scheme": "darkred"},
+               "legend": {"title": "Niehgbourhood Group",
+                "labelFontSize": 16,
+                "titleFontSize": 14,
+                "direction":"vertical",
+                "columnPadding": 15}
         },
         "opacity": {
           "condition": {"selection": "neigh_highlight", "value": 0.6},
@@ -123,7 +128,7 @@
         "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum.price > 2000",
+            "test": "datum.price < 0",
             "value": 1
           },
           "value": 0
@@ -135,6 +140,47 @@
           {"field": "calculated_host_listings_count", "type": "quantitative", "format": ","}, 
           {"field": "price", "type": "quantitative", "format": ","}]
       }
-    }
-  ]
+    },
+    {"transform":
+    [{"filter": "datum.neighbourhood_group == 'Bronx'"},
+    {"filter": "datum.price > 400"},
+    {"filter": "datum.price < 800"},
+{"calculate": "' (Bronx) Listings price > 400 and < 800'", "as": "text_annotation1"}],
+    "mark": {"type": "text", "align": "right", "dx": 2},
+    "encoding": {"text": {"field": "text_annotation1"}
+    }},
+    {"transform":
+    [{"filter": "datum.neighbourhood_group == 'Manhattan'"},
+    {"filter": "datum.price > 4000"},
+    {"filter": "datum.price < 8000"},
+{"calculate": "' (Manhattan) Listings price > 4000 and < 8000'", "as": "text_annotation1"}],
+    "mark": {"type": "text", "align": "right", "dx": 4},
+    "encoding": {"text": {"field": "text_annotation1"}
+    }},
+    {"transform":
+    [{"filter": "datum.neighbourhood_group == 'Brooklyn'"},
+    {"filter": "datum.price >2000 "},
+    {"filter": "datum.price < 8000 "},
+{"calculate": "' (Brooklyn) Lisitngs price > 2000 and < 8000'", "as": "text_annotation1"}],
+    "mark": {"type": "text", "align": "right", "dx": 4},
+    "encoding": {"text": {"field": "text_annotation1"}
+    }},
+    {"transform":
+    [{"filter": "datum.neighbourhood_group == 'Queens'"},
+    {"filter": "datum.price > 2000"},
+    {"filter": "datum.price < 8000"},
+{"calculate": "' (Queens) Listings price > 2000 and < 8000'", "as": "text_annotation1"}],
+    "mark": {"type": "text", "align": "right", "dx": 4},
+    "encoding": {"text": {"field": "text_annotation1"}
+    }},
+    {"transform":
+    [{"filter": "datum.neighbourhood_group == 'Staten Island'"},
+    {"filter": "datum.price > 300"},
+    {"filter": "datum.price < 400"},
+{"calculate": "' (Staten Island) average price > 300 and < 400'", "as": "text_annotation1"}],
+    "mark": {"type": "text", "align": "right", "dx": 4},
+    "encoding": {"text": {"field": "text_annotation1"}
+    }}
+  ],
+  "config": {"view": {"stroke": "transparent"}}
 }
