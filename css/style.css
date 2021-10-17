@@ -4,6 +4,8 @@
 
 
 
+
+
 h1{
     text-align: center;
     padding-left: 20px;
@@ -50,9 +52,11 @@ h6{
     line-height: 33px;
     margin: auto;
     margin-right: auto;
-    text-align: left;
+    text-align: justify;
     padding-bottom: 50px;
     margin-top: 15px;
+    font-weight: bolder;
+    word-spacing: 5px;
 }
 .description-map{
     margin-top: 30px;
@@ -60,25 +64,31 @@ h6{
     padding-left: 30px;
     line-height: 33px;
     margin-right: 10px;
+    text-align: justify;
+    font-weight: bolder;
+    word-spacing: 5px;
 }
 
 .description-2{
     padding-left: 20px;
-    margin-right: 10px;
+    margin-right: 25px;
     line-height: 33px;
     margin-top: 30px;
-    text-align: left;
+    text-align: justify;
     padding-bottom: 30px;
+    font-weight: bolder;
+    word-spacing: 5px;
 }
 
 .description-3{
-    width: 90%;
-    padding-right: 20px;
+    width: 70%;
     padding-left: 25px;
-    margin-right: 10px;
     text-align: left;
+    margin-left: 20px;
     line-height: 35px;
     font-size: 20px;
+    font-weight: bolder;
+    word-spacing: 5px;
 }
 
 
@@ -139,7 +149,7 @@ p{
 .small-font2 {
     font-family: 'Roboto';
     font-size: 12px;
-    padding-left: 25px;
+    margin-left: 50px;
     text-align: left;
 }
 
@@ -157,4 +167,5 @@ p{
     padding-top: 5px;
     color:black
 }
+
 
